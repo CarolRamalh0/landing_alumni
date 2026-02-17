@@ -130,6 +130,7 @@ ul {
 .badge-neon {
     background-color: var(--color-green);
     color: var(--color-purple);
+    margin-bottom: 20px;
 }
 
 /* =======================================================
@@ -562,4 +563,14 @@ ul {
 @media (min-width: 1024px) {
     /* Grid de 3 colunas */
     .grid-3-col { grid-template-columns: repeat(3, 1fr); }
+}
+
+.logo {
+            position: absolute;
+            display: block;
+            top: 50px;
+            left: 130px;
+            width: 200px; 
+            height: auto;
+            z-index: 1000;  
 }
