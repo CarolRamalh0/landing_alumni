@@ -1,0 +1,565 @@
+/* =======================================================
+   1. IMPORTAR FUENTE POPPINS (Desde Google Fonts)
+   ======================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+/* =======================================================
+   ESTILOS GERAIS & VARIÁVEIS (CSS)
+   ======================================================= */
+
+:root {
+    /* --- TIPOGRAFÍA (Definida aquí para cambiar fácil) --- */
+    --font-main: 'Poppins', sans-serif;
+
+    /* Cores da Marca */
+    --color-purple: #4c1d95;  /* Roxo Profundo */
+    --color-purple-light: #6d28d9;
+    --color-green: #a3e635;   /* Verde Neon */
+    --color-green-hover: #bef264;
+    --color-dark: #111827;    /* Fundo Escuro */
+    --color-gray-light: #f9fafb;
+    --color-text-main: #1f2937;
+    --color-text-muted: #6b7280;
+
+    /* Cores de Apoio (Cards) */
+    --color-blue-bg: #eff6ff;
+    --color-blue-border: #bfdbfe;
+    --color-blue-text: #1e40af;
+    
+    --color-yellow-bg: #fefce8;
+    --color-yellow-border: #fde047;
+    
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* AQUI APLICAMOS POPPINS VIA VARIÁVEL */
+    font-family: var(--font-main);
+    color: var(--color-text-main);
+    background-color: #fff;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* =======================================================
+   LAYOUT & UTILITÁRIOS
+   ======================================================= */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light { background-color: var(--color-gray-light); }
+.bg-dark { background-color: var(--color-dark); color: white; }
+
+.center-text { text-align: center; }
+
+/* Grid Responsivo */
+.grid-2-col, .grid-3-col {
+    display: grid;
+    gap: 30px;
+}
+
+/* =======================================================
+   COMPONENTES (BOTÕES, BADGES)
+   ======================================================= */
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 800;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    border: none; /* Reset para botón */
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--color-green);
+    color: var(--color-purple);
+    box-shadow: 0 4px 14px rgba(163, 230, 53, 0.5);
+}
+
+.btn-large {
+    font-size: 1.2rem;
+    padding: 20px 40px;
+}
+
+.animate-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(163, 230, 53, 0.6);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.badge-neon {
+    background-color: var(--color-green);
+    color: var(--color-purple);
+}
+
+/* =======================================================
+   SEÇÃO 1: HERO (Capa)
+   ======================================================= */
+
+.hero-section {
+    background-color: var(--color-purple);
+    color: white;
+    position: relative;
+    padding: 100px 0 150px; /* Extra padding no final para a onda */
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(to right, #a3e635, #bef264);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    margin-bottom: 40px;
+}
+
+.hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.info-pill {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+}
+
+.wave-divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}
+
+.wave-divider svg {
+    width: 100%;
+    height: 50px;
+    fill: #fff; /* Cor do fundo da próxima seção */
+}
+
+/* =======================================================
+   SEÇÃO 2: PERFIL
+   ======================================================= */
+   
+.title-purple { color: var(--color-purple); }
+.icon-gold { color: #eab308; margin-right: 10px; }
+
+.section-header { margin-bottom: 50px; }
+.section-header h2 { font-size: 2rem; }
+
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column; /* Mobile first */
+    align-items: center;
+    padding: 40px;
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--color-purple);
+    object-fit: cover;
+}
+
+.profile-content { text-align: center; }
+
+.role-text {
+    color: var(--color-purple);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.quote-box {
+    font-style: italic;
+    color: #4b5563;
+    border-left: 4px solid var(--color-green);
+    padding-left: 15px;
+    background: #f9fafb;
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+}
+
+/* =======================================================
+   SEÇÃO 3: CARDS (Diretoria & Coordenação)
+   ======================================================= */
+
+.category-title {
+    color: var(--color-purple);
+    border-bottom: 2px solid var(--color-purple);
+    display: inline-block;
+    margin-bottom: 30px;
+    padding-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.card {
+    background: white; /* Asegurar fondo blanco */
+    border-radius: 15px;
+    padding: 25px;
+    position: relative;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.hover-lift:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+
+/* Variações de Cores dos Cards */
+.card-blue { background-color: var(--color-blue-bg); border-color: var(--color-blue-border); }
+.card-purple { background-color: #f3e8ff; border-color: #d8b4fe; }
+.card-pink { background-color: #fce7f3; border-color: #fbcfe8; }
+.card-green { background-color: #ecfccb; border-color: #bef264; }
+
+.card-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #3b82f6;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 0 15px 0 10px;
+}
+
+.card-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.bg-blue-light { background: #dbeafe; color: #2563eb; }
+
+.card-requirements { font-size: 0.9rem; margin-bottom: 15px; }
+.text-success { color: #15803d; font-weight: 600; }
+.text-danger { color: #dc2626; font-weight: 600; }
+
+.card-body-box {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+.label {
+    font-weight: bold;
+    color: var(--color-blue-text);
+    margin-bottom: 5px;
+    font-size: 0.8rem;
+}
+
+.alert-box {
+    background: var(--color-yellow-bg);
+    border-left: 4px solid #eab308;
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.mini-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    padding: 3px 8px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 0 15px 0 10px;
+}
+.bg-purple { background: var(--color-purple); }
+.bg-pink { background: #ec4899; }
+.bg-green { background: #65a30d; }
+
+.special-card {
+    background: #fff7ed;
+    border: 2px solid #fed7aa;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+.mission { color: #9a3412; font-weight: bold; margin: 10px 0; }
+
+/* =======================================================
+   SEÇÃO 4: PROCESSO (Steps)
+   ======================================================= */
+
+.process-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.step-card {
+    background: #1f2937;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #374151;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+.step-card:hover { border-color: var(--color-green); }
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: var(--color-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: 4px solid var(--color-dark);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.step-card h4 { color: var(--color-green); margin-bottom: 10px; }
+.step-date {
+    background: #374151;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-family: monospace;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* =======================================================
+   SEÇÃO 5: FAQ (Acordeão)
+   ======================================================= */
+
+.faq-container { display: flex; flex-direction: column; gap: 15px; }
+
+.faq-item {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-item summary {
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none; /* Remove marcador padrão */
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+
+.faq-item[open] .arrow-icon { transform: rotate(180deg); }
+.arrow-icon { transition: transform 0.3s; color: var(--color-purple); }
+
+.faq-content {
+    padding: 20px;
+    background: white;
+    border-left: 4px solid #ccc;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+.border-red { border-left-color: #ef4444; }
+.border-green { border-left-color: #22c55e; }
+.border-purple { border-left-color: var(--color-purple); }
+.border-yellow { border-left-color: #eab308; }
+
+/* =======================================================
+   SEÇÃO 6: BENEFÍCIOS
+   ======================================================= */
+
+.benefit-card {
+    background: white;
+    padding: 25px;
+    border-left: 4px solid #ccc;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s;
+}
+.benefit-card:hover { transform: translateY(-5px); }
+
+/* =======================================================
+   SEÇÃO 7: TABELA CRONOGRAMA
+   ======================================================= */
+
+.table-wrapper { overflow-x: auto; box-shadow: var(--shadow-lg); border-radius: 10px; }
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* Evita quebra no mobile */
+}
+
+.schedule-table th {
+    background: var(--color-purple);
+    color: white;
+    padding: 15px;
+    text-align: left;
+}
+
+.schedule-table td { padding: 15px; border-bottom: 1px solid #e5e7eb; }
+.row-light { background: #f9fafb; }
+.date { font-weight: bold; color: var(--color-purple); }
+.event { font-weight: 600; }
+
+/* =======================================================
+   SEÇÃO 8: DEPOIMENTOS & FOOTER
+   ======================================================= */
+
+.testimonial-card {
+    background: #1f2937;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #374151;
+    position: relative;
+}
+.quote-icon { font-size: 2rem; color: var(--color-green); opacity: 0.2; position: absolute; top: 20px; left: 20px; }
+.quote-text { margin: 20px 0; font-style: italic; color: #d1d5db; position: relative; z-index: 1; }
+.testimonial-author { display: flex; align-items: center; gap: 15px; border-top: 1px solid #374151; padding-top: 15px; }
+
+.avatar-circle {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--color-purple);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 0.8rem;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, #4c1d95, #312e81);
+    color: white;
+    padding: 80px 20px;
+}
+.contact-box {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 40px;
+    display: inline-block;
+    text-align: left;
+}
+
+.main-footer {
+    background: black;
+    color: #6b7280;
+    padding: 40px 0;
+    font-size: 0.9rem;
+    border-top: 1px solid #1f2937;
+}
+
+.footer-brand { color: #9ca3af; font-weight: bold; text-transform: uppercase; margin-bottom: 10px; }
+
+/* =======================================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   Documentação: Ajustes para Tablet e Desktop
+   ======================================================= */
+
+@media (min-width: 768px) {
+    /* Fontes maiores no desktop */
+    .hero-title { font-size: 4rem; }
+    
+    /* Grid de 2 colunas */
+    .grid-2-col { grid-template-columns: 1fr 1fr; }
+    
+    /* Perfil lado a lado */
+    .profile-card { flex-direction: row; text-align: left; }
+    .quote-box { border-left: 4px solid var(--color-green); } /* Reset da borda */
+
+    /* Processo (Steps) na horizontal */
+    .process-steps { grid-template-columns: 1fr 1fr 1fr; }
+    .connector-line {
+        position: absolute;
+        top: 50px; left: 0; width: 100%; height: 4px;
+        background: #374151; z-index: 0;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Grid de 3 colunas */
+    .grid-3-col { grid-template-columns: repeat(3, 1fr); }
+}
